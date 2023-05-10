@@ -12,6 +12,7 @@ bazel-testlogs
 dist
 dist-dev
 lib
+!src/lib
 lib-types
 etc
 external
