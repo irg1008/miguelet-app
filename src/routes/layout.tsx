@@ -14,7 +14,7 @@ export default component$(() => {
   return (
     <>
       <Header />
-      <main>
+      <main class="flex-1 grid place-content-center justify-items-center">
         <Slot />
       </main>
       <Footer />

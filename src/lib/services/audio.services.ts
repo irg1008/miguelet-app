@@ -14,14 +14,13 @@ type Match = {
   value: string;
 };
 
-type Result = {
+export type AudioData = {
   item: string;
   refIndex: number;
   matches: Match[];
 };
 
-export const searchAudios = server$(async (q: string, limit: number): Promise<Result[]> => {
-  if (q === '') return [];
+export const searchAudios = server$(async (q: string, limit: number): Promise<AudioData[]> => {
   const replacedParams = ENDPOINTS.SEARCH.replace('{q}', q).replace('{limit}', limit.toString());
   const url = `${cdn}/${replacedParams}`;
   const res = await fetch(url);
