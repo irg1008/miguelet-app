@@ -31,7 +31,7 @@ export const head: DocumentHead = {
   meta: [
     {
       name: 'description',
-      content: 'la web de los audios y el basuco',
+      content: 'La web de los audios y el basuco',
     },
   ],
 };
