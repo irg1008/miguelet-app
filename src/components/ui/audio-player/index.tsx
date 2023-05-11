@@ -29,7 +29,7 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ audio }) => {
     <a
       class="card card-body bg-primary relative shadow-lg shadow-primary/30 hover:scale-105 transition-transform ease-out-back duration-300 ring-1 ring-primary ring-offset-primary-focus ring-offset-2"
       key="item"
-      href={`https://miguelet.spoiled.workers.dev/audios/${audio.item}`}
+      href={`https://miguelet.spoiled.workers.dev/audios/${audio.item}.ogg`}
       target="_blank"
     >
       <span dangerouslySetInnerHTML={text}></span>
