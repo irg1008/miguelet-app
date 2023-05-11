@@ -27,4 +27,8 @@
   .tooltip {
     text-transform: unset;
   }
+
+  mark {
+    @apply bg-transparent bg-gradient-to-r text-accent-content from-accent/30 to-secondary/40 px-0 py-1 rounded-bl-2xl rounded-tr-2xl;
+  }
 }

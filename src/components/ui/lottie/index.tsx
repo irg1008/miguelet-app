@@ -1,4 +1,4 @@
-import { $, component$, useId, useVisibleTask$ } from '@builder.io/qwik';
+import { component$, useId, useSignal, useVisibleTask$ } from '@builder.io/qwik';
 import type { IColors } from 'lord-icon-element/interfaces';
 import { twMerge } from 'tailwind-merge';
 import type { Icon } from './library';
@@ -25,6 +25,7 @@ type LottieProps = {
   colors?: IColors;
   delay?: number;
   class?: string;
+  readyClass?: string;
   currentClass?: boolean;
   scale?: string;
   'axis-x'?: string;
@@ -32,19 +33,23 @@ type LottieProps = {
 };
 
 export const Lottie = component$<LottieProps>(
-  ({ colors, loading = 'lazy', trigger = 'loop', currentClass = true, icon, ...props }) => {
+  ({
+    colors,
+    loading = 'lazy',
+    trigger = 'loop',
+    currentClass = true,
+    readyClass,
+    icon,
+    ...props
+  }) => {
     const id = useId();
-
-    const addReadyClass = $(() => {
-      const el = document.querySelector(`#${id}`);
-      el?.addEventListener('ready', () => el.classList.add('ready'));
-    });
+    const ready = useSignal(false);
 
     useVisibleTask$(async () => {
       const { loadAnimation } = await import('lottie-web').then((m) => m.default);
       const { defineElement } = await import('lord-icon-element');
       defineElement(loadAnimation);
-      addReadyClass();
+      ready.value = true;
     });
 
     const colorsString = colors && `primary:${colors.primary},secondary:${colors.secondary}`;
@@ -60,7 +65,7 @@ export const Lottie = component$<LottieProps>(
         colors={colorsString}
         class={twMerge(
           'opacity-0 duration-200',
-          '[&.ready]:opacity-100',
+          ready.value && ['opacity-100', readyClass],
           useCurrentClass && 'current-color',
           props.class,
         )}

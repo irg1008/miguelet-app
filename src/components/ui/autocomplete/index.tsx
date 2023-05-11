@@ -29,16 +29,17 @@ export const Autocomplete = component$<AutocompleteProps>(
     });
 
     return (
-      <fieldset class="form-control max-w-xs relative">
+      <fieldset class="form-control w-full relative">
         <input
+          autoFocus
           type="text"
           name="q"
           placeholder={placeholder || 'Search'}
-          class="input input-primary input-group pr-12"
+          class="input input-primary input-group pr-12 bg-opacity-75 backdrop-blur-sm"
           bind:value={q}
         />
         <aside class="absolute right-0 top-0 h-full flex items-center pr-4">
-          <Lottie icon="search" delay={5000} trigger="loop" class="w-4 h-4 text-base-content" />
+          <Lottie icon="search" delay={5000} class="w-4 h-4 text-base-content" />
         </aside>
       </fieldset>
     );
