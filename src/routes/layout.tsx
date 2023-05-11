@@ -14,7 +14,7 @@ export default component$(() => {
   return (
     <>
       <Header />
-      <main class="flex-1 flex flex-col items-center gap-4 justify-items-center px-12 pb-8 pt-20 max-w-6xl mx-auto">
+      <main class="flex-1">
         <Slot />
       </main>
       <Footer />
