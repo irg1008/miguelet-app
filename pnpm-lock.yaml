@@ -2,11 +2,11 @@ lockfileVersion: '6.0'
 
 devDependencies:
   '@builder.io/qwik':
-    specifier: ^1.0.0
-    version: 1.1.0(undici@5.22.0)
+    specifier: ^1.1.1
+    version: 1.1.1(undici@5.22.0)
   '@builder.io/qwik-city':
-    specifier: ^1.0.0
-    version: 1.1.0
+    specifier: ^1.1.1
+    version: 1.1.1
   '@tailwindcss/forms':
     specifier: ^0.5.3
     version: 0.5.3(tailwindcss@3.3.1)
@@ -35,8 +35,14 @@ devDependencies:
     specifier: 8.40.0
     version: 8.40.0
   eslint-plugin-qwik:
-    specifier: ^1.0.0
-    version: 1.1.0(eslint@8.40.0)
+    specifier: ^1.1.1
+    version: 1.1.1(eslint@8.40.0)
+  lord-icon-element:
+    specifier: ^4.1.1
+    version: 4.1.1
+  lottie-web:
+    specifier: ^5.11.0
+    version: 5.11.0
   postcss:
     specifier: ^8.4.23
     version: 8.4.23
@@ -76,8 +82,8 @@ devDependencies:
 
 packages:
 
-  /@builder.io/qwik-city@1.1.0:
-    resolution: {integrity: sha512-1j7ofLpqJxVo1Ao+NsVUdE6IE1U2qLOGhlhzxtnZCmZsK5Oll/2rGyfOgkxxTYk0xlDay8SHkJGpF+pAdDByRg==}
+  /@builder.io/qwik-city@1.1.1:
+    resolution: {integrity: sha512-zF+hCFuugnYAWMG3UGBXo02AZiMpZsTnohCifLM+f0508YHEhWC0QzO2Y1LcyFxo8JVM89uzWNobJMrcF7G3jw==}
     engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
     dependencies:
       '@mdx-js/mdx': 2.3.0
@@ -89,8 +95,8 @@ packages:
       - supports-color
     dev: true
 
-  /@builder.io/qwik@1.1.0(undici@5.22.0):
-    resolution: {integrity: sha512-A8PlZi8iQcBLYHmpgRClhLKNM35RVn4wL0Ek6ETRKhH+Oh6iRgN0YcHCQO2APmlc1ajAE4tRfFRH2lroi3nREQ==}
+  /@builder.io/qwik@1.1.1(undici@5.22.0):
+    resolution: {integrity: sha512-Bv1Ei2kV4glny3W5zQqpz/zwoxqdCcZ03InLyVY61UbnE2ruAZutH3WfGSNt9CjlK7EXHvPOAw0lb3/xWXAPvQ==}
     engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
     hasBin: true
     peerDependencies:
@@ -1568,8 +1574,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-plugin-qwik@1.1.0(eslint@8.40.0):
-    resolution: {integrity: sha512-LN7prCRThRkWr1l5SMHbebwQM8N2VhW52ArzfO7bSpSPR5WQHHqhPuwBMRM4gJJCbOArylr5tGB3/J6fLS7uPA==}
+  /eslint-plugin-qwik@1.1.1(eslint@8.40.0):
+    resolution: {integrity: sha512-/8UTrugT0fym9L7gmEzWt30WJCK0bKJFAwaVr/oD4CDfl0s68CDaRWvafTsNHqDSQDVrOtCVW+U51U4zMALKmw==}
     engines: {node: '>=16'}
     peerDependencies:
       eslint: '>= 8'
@@ -2321,6 +2327,15 @@ packages:
 
   /longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
+    dev: true
+
+  /lord-icon-element@4.1.1:
+    resolution: {integrity: sha512-cfydpCwB/23GSffD5ewBANr1P8ZBe8tPoJH19kncWcpJBV/VHqqzkml/bgZuoTvsU9DUA50Whk9wUlPmJ4wn6g==}
+    engines: {node: '>=16.0.0'}
+    dev: true
+
+  /lottie-web@5.11.0:
+    resolution: {integrity: sha512-9vSt0AtdOH98GKDXwD5LPfFg9Pcmxt5+1BllAbudKM5iqPxpJnJUfuGaP45OyudDrESCOBgsjnntVUTygBNlzw==}
     dev: true
 
   /lru-cache@6.0.0:
