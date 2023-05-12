@@ -1,5 +1,6 @@
 import type { QwikIntrinsicElements } from '@builder.io/qwik';
 import { component$ } from '@builder.io/qwik';
+import { twMerge } from 'tailwind-merge';
 
 type PlayTimeProps = QwikIntrinsicElements['span'] & {
   seconds: number;
@@ -30,7 +31,7 @@ const CountDown = component$(({ time }: { time: string | number }) => (
 export const PlayTime = component$<PlayTimeProps>(({ seconds, ...props }) => {
   const [min, sec] = formatTime(seconds);
   return (
-    <span {...props}>
+    <span {...props} class={twMerge(props.class?.toString(), 'flex items-baseline')}>
       <CountDown time={min} />
       :
       <CountDown time={sec} />

@@ -27,7 +27,7 @@ export const AudioCard = component$<AudioPlayerProps>(({ audio }) => {
       <main class="card-body p-2">
         <div class="flex gap-4 items-center">
           <AudioPlayer src={src} />
-          <span dangerouslySetInnerHTML={text} class="line-clamp-1" title={audio.item}></span>
+          <span dangerouslySetInnerHTML={text} class="line-clamp-2" title={audio.item}></span>
           <button
             class="btn btn-ghost text-lg btn-circle ml-auto"
             title="Compartir"

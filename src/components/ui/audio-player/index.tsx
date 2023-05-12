@@ -69,22 +69,6 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
       </button>
 
       <PlayTime class="text-2xl font-extrabold opacity-25 italic" seconds={time.value} />
-      {/* <footer class="flex gap-2 p-4">
-        <audio preload="metadata" ref={audioRef}>
-          <source src={getAudioUrl(audio.item, 'ogg')} type="audio/ogg" />
-        </audio>
-
-
-
-        <span class="inline-block">0:00</span>
-        <input type="range" class="range range-secondary" max="100" value="0" />
-        <span class="inline-block">{audioRef.value?.duration}</span>
-        <output id="volume-output">100</output>
-
-        <input type="range" class="range range-accent" max="100" value="100"></input>
-
-        <button id="mute-icon">mute</button>
-      </footer> */}
     </div>
   );
 });
