@@ -1,0 +1,32 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#49c6f8",
+    "activityBar.background": "#49c6f8",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#d7089c",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#15202b99",
+    "sash.hoverBorder": "#49c6f8",
+    "statusBar.background": "#18b6f6",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#0898d3",
+    "statusBarItem.remoteBackground": "#18b6f6",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#18b6f6",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#18b6f699",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#18b6f6",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  },
+  "explorer.excludeGitIgnore": false,
+  "css.lint.unknownAtRules": "ignore",
+  "html.customData": [
+    "./node_modules/vidstack/vscode.html-data.json"
+  ]
+}
