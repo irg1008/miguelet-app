@@ -1,6 +1,7 @@
 import { server$ } from '@builder.io/qwik-city';
 
-const cdn = 'https://miguelet.spoiled.workers.dev';
+const baseUrl = 'https://miguelet.spoiled.workers.dev';
+// const baseUrl = 'http://192.168.0.16:8787';
 
 enum ENDPOINT {
   SEARCH = 'audios/search/{q}/{limit}',
@@ -17,13 +18,19 @@ type Params = {
   };
 };
 
-async function api<E extends ENDPOINT>(endpoint: E, params: Params[E]) {
+type Ext = 'ogg' | 'acc';
+
+const parseEndpoint = <E extends ENDPOINT>(endpoint: E, params: Params[E]) => {
   let e = endpoint.toString();
   Object.entries(params).forEach(([key, value]) => {
     e = e.replace(`{${key}}`, value.toString());
   });
 
-  const url = `${cdn}/${e}`;
+  return `${baseUrl}/${e}`;
+};
+
+async function api<E extends ENDPOINT>(endpoint: E, params: Params[E]) {
+  const url = parseEndpoint(endpoint, params);
   const res = await fetch(url);
   return res;
 }
@@ -46,6 +53,11 @@ export const searchAudios = server$(async (q: string, limit: number): Promise<Au
   return res.ok ? await res.json() : [];
 });
 
-export const getAudioUrl = (name: string, extension: 'ogg' | 'acc' = 'ogg') => {
-  return `${cdn}/${ENDPOINT.GET_AUDIO.replace('{name}', `${name}.${extension}`)}`;
+export const getAudioUrl = (name: string, extension: Ext) => {
+  return parseEndpoint(ENDPOINT.GET_AUDIO, { name }) + `.${extension}`;
 };
+
+export const getAudioBuffer = server$(async (name: string, ext: Ext) => {
+  const res = await api(ENDPOINT.GET_AUDIO, { name: `${name}.${ext}` });
+  return res.ok ? await res.arrayBuffer() : null;
+});

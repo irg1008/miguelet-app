@@ -15,7 +15,7 @@ export default component$(() => {
         </span>
       </aside>
 
-      <main class="hero-content max-w-2xl prose lg:prose-2xl mx-auto">
+      <main class="hero-content max-w-2xl prose-sm prose lg:prose-2xl mx-auto">
         <h1 class="uppercase text-center animate-scale-in">Bienvenido a la web de Miguelet</h1>
       </main>
     </section>

@@ -1,4 +1,4 @@
-import { AudioData } from '@/lib/services/audio.services';
+import { AudioData } from '@/lib/services/audio.service';
 import { JSXTagName } from '@builder.io/qwik';
 
 const wrap = (value: string, tag: JSXTagName) => `<${tag}>${value}</${tag}>`;

@@ -1,7 +1,8 @@
-import { AudioPlayer } from '@/components/ui/audio-player';
+import { AudioCard } from '@/components/audio-card';
 import { Spinner } from '@/components/ui/icons/loading';
-import type { AudioData } from '@/lib/services/audio.services';
-import { searchAudios } from '@/lib/services/audio.services';
+import { useAudiosProvider } from '@/contexts/audios.context';
+import type { AudioData } from '@/lib/services/audio.service';
+import { searchAudios } from '@/lib/services/audio.service';
 import type { Signal } from '@builder.io/qwik';
 import { Resource, component$, useResource$ } from '@builder.io/qwik';
 import { twMerge } from 'tailwind-merge';
@@ -19,6 +20,8 @@ export const Audios = component$<AudiosProps>(({ query, limit = 50, onAudiosLoad
     onAudiosLoaded?.(audios);
     return audios;
   });
+
+  useAudiosProvider();
 
   return (
     <>
@@ -38,12 +41,12 @@ export const Audios = component$<AudiosProps>(({ query, limit = 50, onAudiosLoad
           ) : (
             <div
               class={twMerge(
-                'w-full grid gap-6 grid-cols-audios mt-8',
+                'w-full gap-6 mt-8 flex flex-col sm:grid sm:grid-cols-audios',
                 res.loading ? 'animate-fade-out-down' : 'animate-fade-in-up',
               )}
             >
               {audios.map((audio) => (
-                <AudioPlayer key={audio.refIndex} audio={audio} />
+                <AudioCard key={audio.refIndex} audio={audio} />
               ))}
             </div>
           )

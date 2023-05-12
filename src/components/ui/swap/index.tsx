@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 
 type SwapProps = {
   active: boolean;
+  class?: string;
 };
 
 export const Swap = component$<SwapProps>(({ active }) => {

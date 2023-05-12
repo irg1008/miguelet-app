@@ -1,102 +1,80 @@
-import type { AudioData } from '@/lib/services/audio.services';
-import { getAudioUrl } from '@/lib/services/audio.services';
-import { highlightMatches } from '@/lib/utils/audios.utils';
+import { Pause } from '@/components/ui/icons/pause';
+import { Play } from '@/components/ui/icons/play';
+import { PlayTime } from '@/components/ui/play-time';
+import { Swap } from '@/components/ui/swap';
+import { useAudios } from '@/contexts/audios.context';
 import { $, component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
 
 type AudioPlayerProps = {
-  audio: AudioData;
+  src: string;
+  onPlay?: () => void;
+  onPause?: () => void;
 };
 
-export const AudioPlayer = component$<AudioPlayerProps>(({ audio }) => {
-  const text = highlightMatches(audio);
-  const playing = useSignal(false);
+export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay }) => {
+  const { add } = useAudios();
 
-  const duration = useSignal(0);
-  const audioRef = useSignal<HTMLAudioElement>();
+  const playing = useSignal(false);
+  const audio = useSignal<HTMLAudioElement>();
+  const time = useSignal(0);
 
   const setUpAudio = $(() => {
-    if (!audioRef.value) return;
+    audio.value = new Audio(src);
 
-    audioRef.value.volume = 0.2;
-
-    audioRef.value.addEventListener('ended', () => {
+    audio.value.addEventListener('ended', () => {
       playing.value = false;
+      time.value = 0;
     });
 
     // On play, pause all other audios.
-    audioRef.value.addEventListener('play', () => {
-      const audios = document.querySelectorAll('audio');
-      audios.forEach((audio) => {
-        if (audio !== audioRef.value) {
-          audio.pause();
-          audio.currentTime = 0;
-        }
-      });
+    audio.value.addEventListener('play', function () {
+      playing.value = true;
+      add(src, this);
+      onPlay?.();
+
+      // Pause the rest of audio elements created.
     });
 
     // On pause, set playing to false. This way we handle external pause.
-    audioRef.value.addEventListener('pause', () => {
+    audio.value.addEventListener('pause', () => {
+      onPause?.();
       playing.value = false;
     });
 
-    audioRef.value.addEventListener('play', function () {
-      console.log(this.duration);
+    audio.value.addEventListener('timeupdate', function () {
+      time.value = this.currentTime;
     });
   });
 
-  const toggleAudio = $(() => {
-    if (!audioRef.value) return;
-    if (playing.value) audioRef.value.pause();
-    else audioRef.value.play();
-    playing.value = !playing.value;
+  useVisibleTask$(() => {
+    setUpAudio();
   });
 
-  useVisibleTask$(() => setUpAudio());
-
-  useVisibleTask$(async () => {
-    import('vidstack/styles/base.css');
-    const { defineCustomElements } = await import('vidstack/elements');
-    defineCustomElements();
+  const toggleAudio = $(() => {
+    if (!audio.value) return;
+    playing.value ? audio.value.pause() : audio.value.play();
   });
 
   return (
-    <article class="card drop-shadow-sm bg-primary h-auto relative shadow-lg shadow-primary/30 ring-1 ring-primary ring-offset-primary-focus ring-offset-2 flex flex-col justify-between">
-      <main class="card-body">
-        <span dangerouslySetInnerHTML={text} class="line-clamp-3" title={audio.item}></span>
-      </main>
-
-      <media-player
-        title="Tears of Steel: 40 Years Later"
-        src={getAudioUrl(audio.item, 'ogg')}
-        controls
+    <div class="flex items-center gap-2 transition-transform duration-200 ease-in-out">
+      <button
+        class="btn btn-circle btn-ghost text-lg"
+        onClick$={toggleAudio}
+        title={playing.value ? 'Pausar' : 'Reproducir'}
       >
-        <media-outlet></media-outlet>
-      </media-player>
+        <Swap active={playing.value}>
+          <Pause q:slot="on" />
+          <Play q:slot="off" />
+        </Swap>
+      </button>
 
-      <media-player
-        title="Agent 327: Operation Barbershop"
-        src="https://media-files.vidstack.io/720p.mp4"
-        poster="https://media-files.vidstack.io/poster.png"
-        controls
-      >
-        <media-outlet></media-outlet>
-      </media-player>
-
+      <PlayTime class="text-2xl font-extrabold opacity-25 italic" seconds={time.value} />
       {/* <footer class="flex gap-2 p-4">
         <audio preload="metadata" ref={audioRef}>
           <source src={getAudioUrl(audio.item, 'ogg')} type="audio/ogg" />
         </audio>
 
-        <button
-          class="btn btn-circle btn-ghost text-lg"
-          onClick$={toggleAudio}
-          title={playing.value ? 'Pausar' : 'Reproducir'}
-        >
-          <Swap active={playing.value}>
-            <Pause q:slot="on" />
-            <Play q:slot="off" />
-          </Swap>
-        </button>
+
 
         <span class="inline-block">0:00</span>
         <input type="range" class="range range-secondary" max="100" value="0" />
@@ -107,6 +85,6 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ audio }) => {
 
         <button id="mute-icon">mute</button>
       </footer> */}
-    </article>
+    </div>
   );
 });
