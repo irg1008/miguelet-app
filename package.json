@@ -49,8 +49,5 @@
     "vite": "4.3.5",
     "vite-tsconfig-paths": "4.2.0",
     "wrangler": "^2.19.0"
-  },
-  "dependencies": {
-    "vidstack": "^0.5.1"
   }
 }

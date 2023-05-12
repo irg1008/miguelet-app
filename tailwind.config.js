@@ -78,7 +78,7 @@ module.exports = {
         'in-out-expo': 'var(--ease-in-out-expo)',
       },
       gridTemplateColumns: {
-        audios: 'repeat(auto-fill, minmax(300px, 1fr))',
+        audios: 'repeat(auto-fill, minmax(400px, auto))',
       },
     },
   },

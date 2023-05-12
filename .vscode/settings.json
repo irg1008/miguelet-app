@@ -25,8 +25,5 @@
     "source.organizeImports": true
   },
   "explorer.excludeGitIgnore": false,
-  "css.lint.unknownAtRules": "ignore",
-  "html.customData": [
-    "./node_modules/vidstack/vscode.html-data.json"
-  ]
+  "css.lint.unknownAtRules": "ignore"
 }
