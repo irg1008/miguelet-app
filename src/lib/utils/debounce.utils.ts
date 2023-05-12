@@ -1,4 +1,4 @@
-export const debounce = (fn: () => void, time: number) => {
-  const timeout = setTimeout(fn, time);
+export const debounce = (fn: () => void, delay: number) => {
+  const timeout = setTimeout(fn, delay);
   return () => clearTimeout(timeout);
 };

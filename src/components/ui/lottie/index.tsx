@@ -1,8 +1,6 @@
 import { component$, useId, useSignal, useVisibleTask$ } from '@builder.io/qwik';
 import type { IColors } from 'lord-icon-element/interfaces';
 import { twMerge } from 'tailwind-merge';
-import type { Icon } from './library';
-import { getIconSrc } from './library';
 
 type LottieProps = {
   /**
@@ -10,7 +8,7 @@ type LottieProps = {
    *
    * @type {string}
    */
-  icon: Icon;
+  icon: string;
   loading?: 'lazy';
   target?: string;
   stroke?: string;
@@ -59,7 +57,7 @@ export const Lottie = component$<LottieProps>(
       <lord-icon
         id={id}
         {...props}
-        src={getIconSrc(icon)}
+        src={icon}
         loading={loading}
         trigger={trigger}
         colors={colorsString}

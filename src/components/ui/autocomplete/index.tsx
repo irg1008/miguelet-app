@@ -6,14 +6,15 @@ import { component$, useSignal, useTask$ } from '@builder.io/qwik';
 type QueryCb = (q: string) => void;
 
 type AutocompleteProps = {
+  query?: string;
   onQuery?: QRL<QueryCb>;
   onDebouncedQuery?: QRL<QueryCb>;
   placeholder?: string;
 };
 
 export const Autocomplete = component$<AutocompleteProps>(
-  ({ onQuery, onDebouncedQuery, placeholder }) => {
-    const q = useSignal('');
+  ({ onQuery, onDebouncedQuery, placeholder, query }) => {
+    const q = useSignal(query ?? '');
     const debounceTime = 500;
 
     useTask$(async ({ track, cleanup }) => {
@@ -39,7 +40,7 @@ export const Autocomplete = component$<AutocompleteProps>(
           bind:value={q}
         />
         <aside class="absolute right-0 top-0 h-full flex items-center pr-4">
-          <Lottie icon="search" delay={5000} class="w-4 h-4 text-base-content" />
+          <Lottie icon="/lotties/search.json" delay={5000} class="w-4 h-4 text-base-content" />
         </aside>
       </fieldset>
     );

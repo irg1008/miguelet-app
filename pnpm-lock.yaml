@@ -1,5 +1,10 @@
 lockfileVersion: '6.0'
 
+dependencies:
+  vidstack:
+    specifier: ^0.5.1
+    version: 0.5.1(typescript@5.0.4)
+
 devDependencies:
   '@builder.io/qwik':
     specifier: ^1.1.1
@@ -619,6 +624,10 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
+
+  /@maverick-js/signals@5.10.2:
+    resolution: {integrity: sha512-JEoTAsctQwKyL3RIfhqi8a1rVXvBnK7HBEIhrcOICjZ5zb2ignh6FHSa9rmShyoF7rKYd58javxfhFjKC6WCwQ==}
+    dev: false
 
   /@mdx-js/mdx@2.3.0:
     resolution: {integrity: sha512-jLuwRlz8DQfQNiUCJR50Y09CGPq3fLtmtUQfVrj79E0JWu3dvsVcxVIcfhR5h0iXu+/z++zDrYeiJqifRynJkA==}
@@ -2356,6 +2365,16 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /maverick.js@0.36.2(typescript@5.0.4):
+    resolution: {integrity: sha512-XgJH8TkIxDH18v6NkdU7eA2GnpoV7HLfMEfunvaU118RZf4zXg1O/qU6Frq73Ix8S5uYUd8WM2xZ4Y7VD2lt5Q==}
+    engines: {node: '>=16'}
+    dependencies:
+      '@maverick-js/signals': 5.10.2
+      type-fest: 3.10.0(typescript@5.0.4)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
   /mdast-util-definitions@5.1.2:
     resolution: {integrity: sha512-8SVPMuHqlPME/z3gqVwWY4zVXn8lqKv/pAhC57FuJ40ImXyBpmO5ukh98zB2v7Blql2FiHjHv9LVztSIqjY+MA==}
     dependencies:
@@ -2476,6 +2495,16 @@ packages:
     dependencies:
       '@types/mdast': 3.0.11
     dev: true
+
+  /media-captions@0.0.12:
+    resolution: {integrity: sha512-pOuEKYXjG5yvyXwQRmnVDdmOZCfj8yC0OKDSH1kNeuskHo7Rsy+f48g+76Xk5KoMeAO0qRc+ElReO7P6AeY6Qg==}
+    engines: {node: '>=16'}
+    dev: false
+
+  /media-icons@0.5.0:
+    resolution: {integrity: sha512-fFZdWufnwYbKwTwPm0/1xYnTamUBG5EddOy+p8yT7ITV1Vw2sDByCZecNOGG3ynrQVCOQ68Rg/L19aCIxG/K0g==}
+    engines: {node: '>=16'}
+    dev: false
 
   /merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
@@ -3604,6 +3633,15 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /type-fest@3.10.0(typescript@5.0.4):
+    resolution: {integrity: sha512-hmAPf1datm+gt3c2mvu0sJyhFy6lTkIGf0GzyaZWxRLnabQfPUqg6tF95RPg6sLxKI7nFLGdFxBcf2/7+GXI+A==}
+    engines: {node: '>=14.16'}
+    peerDependencies:
+      typescript: '>=4.7.0'
+    dependencies:
+      typescript: 5.0.4
+    dev: false
+
   /typed-array-length@1.0.4:
     resolution: {integrity: sha512-KjZypGq+I/H7HI5HlOoGHkWUUGq+Q0TPhQurLbyrVrvnKTBgzLhIJ7j6J/XTQOi0d1RjyZ0wdas8bKs2p0x3Ng==}
     dependencies:
@@ -3616,7 +3654,6 @@ packages:
     resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
     engines: {node: '>=12.20'}
     hasBin: true
-    dev: true
 
   /unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
@@ -3768,6 +3805,18 @@ packages:
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
     dev: true
+
+  /vidstack@0.5.1(typescript@5.0.4):
+    resolution: {integrity: sha512-7lTTvDhsPkzueF5OaWmT100nQhGGNvPdq8k6fBe8dM27y2kFsPna/0nZG29QToOagjvRIkr+N7V/S6piPO8jMg==}
+    engines: {node: '>=16'}
+    dependencies:
+      maverick.js: 0.36.2(typescript@5.0.4)
+      media-captions: 0.0.12
+      media-icons: 0.5.0
+      type-fest: 3.10.0(typescript@5.0.4)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
 
   /vite-tsconfig-paths@4.2.0(typescript@5.0.4)(vite@4.3.5):
     resolution: {integrity: sha512-jGpus0eUy5qbbMVGiTxCL1iB9ZGN6Bd37VGLJU39kTDD6ZfULTTb1bcc5IeTWqWJKiWV5YihCaibeASPiGi8kw==}

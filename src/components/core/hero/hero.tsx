@@ -3,11 +3,11 @@ import { component$ } from '@builder.io/qwik';
 
 export default component$(() => {
   return (
-    <section class="relative m-8">
-      <aside class="absolute top-0 left-0 grid place-content-center h-full w-full -z-10">
+    <section class="hero m-8 relative">
+      <aside class="hero-overlay bg-transparent absolute top-0 left-0 grid place-content-center">
         <span class="bg-gradient-to-br rounded-full shadow-lg shadow-accent/30 from-secondary to-accent">
           <Lottie
-            icon="mic"
+            icon="/lotties/mic.json"
             delay={2000}
             class="text-accent-content opacity-50 md:h-40 md:w-40 w-32 h-32 rotate-6"
             readyClass="m-16"
@@ -15,10 +15,8 @@ export default component$(() => {
         </span>
       </aside>
 
-      <main>
-        <h2 class="md:text-6xl xs:text-3xl text-xl font-extrabold tracking-wide leading-tight uppercase text-center animate-scale-in">
-          Bienvenido a la web de Miguelet
-        </h2>
+      <main class="hero-content max-w-2xl prose lg:prose-2xl mx-auto">
+        <h1 class="uppercase text-center animate-scale-in">Bienvenido a la web de Miguelet</h1>
       </main>
     </section>
   );

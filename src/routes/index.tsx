@@ -1,27 +1,29 @@
 import { Audios } from '@/components/audios';
 import Hero from '@/components/core/hero/hero';
 import { Autocomplete } from '@/components/ui/autocomplete';
+import { scrollToTop } from '@/lib/utils/window.utils';
 import { $, component$, useSignal } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
+import { useLocation } from '@builder.io/qwik-city';
 
 export default component$(() => {
-  const q = useSignal('');
+  const { url } = useLocation();
+  const params = new URLSearchParams(url.search);
+  const query = useSignal(params.get('q') ?? '');
 
-  const updateQuery = $((query: string) => {
-    q.value = query;
+  const oQueryChange = $((value: string) => {
+    query.value = value;
   });
 
   return (
-    <div class="flex flex-col items-center gap-4 justify-items-center px-12 pb-8 pt-20 max-w-6xl mx-auto relative">
-      <div class="w-full max-w-2xl">
-        <Hero />
+    <div class="flex flex-col items-center gap-4 justify-items-center px-12 pb-8 pt-20 max-w-6xl relative mx-auto">
+      <Hero />
+
+      <div class="w-full max-w-2xl sticky top-10 z-10">
+        <Autocomplete query={query.value} onDebouncedQuery={oQueryChange} />
       </div>
 
-      <div class="w-full max-w-3xl sticky top-10 z-10">
-        <Autocomplete onDebouncedQuery={updateQuery} />
-      </div>
-
-      <Audios query={q.value} />
+      <Audios query={query} onAudiosLoaded={scrollToTop} />
     </div>
   );
 });
