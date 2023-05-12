@@ -24,7 +24,7 @@ type LottieProps = {
   delay?: number;
   class?: string;
   readyClass?: string;
-  currentClass?: boolean;
+  currentColor?: boolean;
   scale?: string;
   'axis-x'?: string;
   'axis-y'?: string;
@@ -35,7 +35,7 @@ export const Lottie = component$<LottieProps>(
     colors,
     loading = 'lazy',
     trigger = 'loop',
-    currentClass = true,
+    currentColor = true,
     readyClass,
     icon,
     ...props
@@ -51,7 +51,7 @@ export const Lottie = component$<LottieProps>(
     });
 
     const colorsString = colors && `primary:${colors.primary},secondary:${colors.secondary}`;
-    const useCurrentClass = currentClass && !colors;
+    const useCurrentClass = currentColor && !colors;
 
     return (
       <lord-icon
