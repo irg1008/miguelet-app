@@ -17,9 +17,11 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
   const playing = useSignal(false);
   const audio = useSignal<HTMLAudioElement>();
   const time = useSignal(0);
+  const duration = useSignal(0);
 
   const setUpAudio = $(() => {
     audio.value = new Audio(src);
+    audio.value.preload = 'metadata';
 
     audio.value.addEventListener('ended', () => {
       playing.value = false;
@@ -40,8 +42,22 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
     });
 
     audio.value.addEventListener('timeupdate', function () {
-      time.value = this.currentTime;
+      time.value = Math.ceil(this.currentTime);
     });
+
+    audio.value.addEventListener('loadedmetadata', function () {
+      duration.value = this.duration;
+    });
+  });
+
+  const onSliderRelease = $(() => {
+    if (!audio.value) return;
+    audio.value.currentTime = time.value;
+    // TODO: This is not changed
+  });
+
+  const onSliderChange = $((value: string) => {
+    time.value = Number(value);
   });
 
   useVisibleTask$(() => {
@@ -54,7 +70,7 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
   });
 
   return (
-    <div class="flex items-center gap-2 transition-transform duration-200 ease-in-out">
+    <div class="flex items-center gap-6 transition-transform duration-200 ease-in-out">
       <button
         class="btn btn-circle btn-ghost text-lg"
         onClick$={toggleAudio}
@@ -66,7 +82,20 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
         </Swap>
       </button>
 
-      <PlayTime class="text-2xl font-extrabold opacity-25 italic" seconds={time.value} />
+      <div class="text-2xl font-extrabold text-opacity-50 italic flex gap-6 items-center">
+        <PlayTime seconds={time.value} />
+        <input
+          type="range"
+          min="0"
+          max={duration.value}
+          step={1}
+          value={time.value}
+          onInput$={(_, el) => onSliderChange(el.value)}
+          onChange$={() => onSliderRelease()}
+          class="range range-accent flex-grow-1 range-xs"
+        />
+        <PlayTime seconds={duration.value} />
+      </div>
     </div>
   );
 });

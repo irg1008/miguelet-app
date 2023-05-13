@@ -5,7 +5,7 @@ export default component$(() => {
   return (
     <section class="hero m-8 relative">
       <aside class="hero-overlay bg-transparent absolute top-0 left-0 grid place-content-center">
-        <span class="bg-gradient-to-br rounded-full shadow-lg shadow-accent/30 from-secondary to-accent">
+        <span class="bg-gradient-to-br rounded-full shadow-2xl shadow-accent/50 from-secondary to-accent">
           <Lottie
             icon="/lotties/mic.json"
             delay={2000}
