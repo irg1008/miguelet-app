@@ -31,8 +31,6 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
       playing.value = true;
       add(src, this);
       onPlay?.();
-
-      // Pause the rest of audio elements created.
     });
 
     // On pause, set playing to false. This way we handle external pause.

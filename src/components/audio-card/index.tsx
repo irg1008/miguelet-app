@@ -1,25 +1,26 @@
+import { AudioPlayer } from '@/components/ui/audio-player';
 import { Lottie } from '@/components/ui/lottie';
 import type { AudioData } from '@/lib/services/audio.service';
 import { getAudioUrl } from '@/lib/services/audio.service';
 import { highlightMatches } from '@/lib/utils/audios.utils';
+import { useAudioExtension } from '@/routes/layout';
 import { $, component$ } from '@builder.io/qwik';
-import { AudioPlayer } from '../ui/audio-player';
 
 type AudioPlayerProps = {
   audio: AudioData;
 };
 export const AudioCard = component$<AudioPlayerProps>(({ audio }) => {
+  const {
+    value: { ext },
+  } = useAudioExtension();
+
   const text = highlightMatches(audio);
-  const src = getAudioUrl(audio.item, 'ogg');
+  const src = getAudioUrl(audio.item, ext);
 
   const shareAudio = $(async () => {
     const blob = await fetch(src).then((res) => res.blob());
-    const file = new File([blob], `${audio.item}.ogg`, { type: 'audio/ogg' });
-    navigator.share({
-      files: [file],
-      title: 'Audios de Miguelet',
-      text: 'Escucha este maravilloso audio!! 📢',
-    });
+    const file = new File([blob], `${audio.item}.${ext}`, { type: `audio/${ext}` });
+    navigator.share({ files: [file] });
   });
 
   return (

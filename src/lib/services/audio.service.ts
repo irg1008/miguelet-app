@@ -18,7 +18,7 @@ type Params = {
   };
 };
 
-type Ext = 'ogg' | 'acc';
+export type Ext = 'ogg' | 'acc';
 
 const parseEndpoint = <E extends ENDPOINT>(endpoint: E, params: Params[E]) => {
   let e = endpoint.toString();

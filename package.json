@@ -33,6 +33,7 @@
     "@typescript-eslint/parser": "5.59.2",
     "autoprefixer": "^10.4.14",
     "daisyui": "^2.51.6",
+    "detect-browser": "^5.3.0",
     "eslint": "8.40.0",
     "eslint-plugin-qwik": "^1.1.1",
     "lord-icon-element": "^4.1.1",

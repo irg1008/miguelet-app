@@ -4,11 +4,12 @@ import { routeLoader$ } from '@builder.io/qwik-city';
 import Footer from '@/components/core/footer/footer';
 import Header from '@/components/core/header/header';
 import { PatternBG } from '@/components/ui/bg/pattern';
+import type { Ext } from '@/lib/services/audio.service';
+import { isWebkit } from '@/lib/utils/browser.utils';
 
-export const useYear = routeLoader$(() => {
-  return {
-    year: new Date().getFullYear(),
-  };
+export const useAudioExtension = routeLoader$(() => {
+  const ext: Ext = isWebkit() ? 'acc' : 'ogg';
+  return { ext };
 });
 
 export default component$(() => {
