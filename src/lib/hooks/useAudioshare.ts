@@ -11,8 +11,7 @@ export const useAudioShare = (name: string) => {
     const file = new File([blob], src, { type: `audio/${ext}` });
     navigator.share({
       files: [file],
-      title: name,
-      text: 'Esucha este maravilloso audio! 📢',
+      title: 'Esucha este maravilloso audio! 📢',
       url: src,
     });
   });
