@@ -9,7 +9,12 @@ export const useAudioShare = (name: string) => {
     const res = await fetch(src);
     const blob = await res.blob();
     const file = new File([blob], src, { type: `audio/${ext}` });
-    navigator.share({ files: [file], title: name });
+    navigator.share({
+      files: [file],
+      title: name,
+      text: 'Esucha este maravilloso audio! 📢',
+      url: src,
+    });
   });
 
   return share;
