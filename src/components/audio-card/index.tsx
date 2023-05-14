@@ -18,9 +18,15 @@ export const AudioCard = component$<AudioPlayerProps>(({ audio }) => {
   const src = getAudioUrl(audio.item, ext);
 
   const shareAudio = $(async () => {
-    const blob = await fetch(src).then((res) => res.blob());
-    const file = new File([blob], `${audio.item}.${ext}`, { type: `audio/${ext}` });
-    navigator.share({ files: [file] });
+
+    if (navigator.share) {
+      const blob = await fetch(src).then((res) => res.blob());
+      const file = new File([blob], `${audio.item}.${ext}`, { type: `audio/${ext}` });
+
+      navigator.share({ files: [file] }).catch(console.error);
+    } else {
+      console.info("Share not Supported")
+    }
   });
 
   return (
