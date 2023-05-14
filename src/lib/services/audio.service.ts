@@ -53,8 +53,8 @@ export const searchAudios = server$(async (q: string, limit: number): Promise<Au
   return res.ok ? await res.json() : [];
 });
 
-export const getAudioUrl = (name: string, extension: Ext) => {
-  return parseEndpoint(ENDPOINT.GET_AUDIO, { name }) + `.${extension}`;
+export const getAudioUrl = (name: string, ext: Ext) => {
+  return parseEndpoint(ENDPOINT.GET_AUDIO, { name }) + `.${ext}`;
 };
 
 export const getAudioBuffer = server$(async (name: string, ext: Ext) => {

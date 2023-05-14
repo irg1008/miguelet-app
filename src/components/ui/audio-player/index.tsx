@@ -42,6 +42,7 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
     });
 
     audio.value.addEventListener('timeupdate', function () {
+      if (!playing.value) return;
       time.value = Math.ceil(this.currentTime);
     });
 
@@ -53,7 +54,8 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
   const onSliderRelease = $(() => {
     if (!audio.value) return;
     audio.value.currentTime = time.value;
-    // TODO: This is not changed
+    // TODO: WTF. Maybe changing deep a singla object does not work. Try using store.
+    console.log('time', audio.value.currentTime, time.value);
   });
 
   const onSliderChange = $((value: string) => {
