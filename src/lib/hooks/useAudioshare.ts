@@ -12,7 +12,6 @@ export const useAudioShare = (name: string) => {
     navigator.share({
       files: [file],
       title: 'Esucha este maravilloso audio! 📢',
-      url: src,
     });
   });
 
