@@ -84,9 +84,9 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
         </Swap>
       </button>
 
-      <div class="text-2xl font-extrabold text-opacity-50 italic flex gap-6 items-center">
-        <PlayTime seconds={time.value} />
-        <input
+      <div class="text-2xl font-extrabold text-opacity-50 italic flex gap-6 items-center flex-wrap">
+        <PlayTime seconds={time.value} />/
+        {/* <input
           type="range"
           min="0"
           max={duration.value}
@@ -95,7 +95,7 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
           onInput$={(_, el) => onSliderChange(el.value)}
           onChange$={() => onSliderRelease()}
           class="range range-accent flex-grow-1 range-xs"
-        />
+        /> */}
         <PlayTime seconds={duration.value} />
       </div>
     </div>

@@ -19,7 +19,7 @@ export const AudioCard = component$<AudioPlayerProps>(({ audio }) => {
       <main class="card-body p-3">
         <span dangerouslySetInnerHTML={text} class="line-clamp-2" title={audio.item}></span>
 
-        <div class="flex gap-4 items-center">
+        <div class="flex gap-4 items-center flex-wrap">
           <AudioPlayer src={src} />
           <button
             class="btn btn-ghost text-lg btn-circle ml-auto"

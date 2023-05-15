@@ -18,7 +18,7 @@ export default component$(() => {
   });
 
   return (
-    <div class="flex flex-col items-center gap-4 justify-items-center px-4 pb-8 pt-20 max-w-6xl relative mx-auto">
+    <div class="flex flex-col items-center gap-4 justify-items-center px-4 pb-8 pt-20 max-w-6xl relative mx-auto overflow-x-hidden">
       <Hero />
 
       <div class="w-full max-w-2xl sticky top-10 z-10">
