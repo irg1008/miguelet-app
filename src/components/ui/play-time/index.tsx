@@ -12,8 +12,8 @@ const lead = (value: number, lead: number, condition: boolean, times = 1): strin
 };
 
 const formatTime = (value: number) => {
-  const min = Math.floor(value / 60);
-  const sec = Math.floor(value % 60);
+  const min = Math.round(value / 60);
+  const sec = Math.round(value % 60);
 
   return [min, lead(sec, 0, sec < 10)];
 };
