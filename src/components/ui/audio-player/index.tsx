@@ -43,11 +43,11 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
 
     audio.value.addEventListener('timeupdate', function () {
       if (!playing.value) return;
-      time.value = Math.floor(this.currentTime);
+      time.value = Math.round(this.currentTime);
     });
 
     audio.value.addEventListener('loadedmetadata', function () {
-      duration.value = this.duration;
+      duration.value = Math.round(this.duration);
     });
   });
 

@@ -41,7 +41,7 @@ export const Audios = component$<AudiosProps>(({ query, limit = 50, onAudiosLoad
           ) : (
             <div
               class={twMerge(
-                'w-full gap-6 mt-8 flex flex-col sm:grid sm:grid-cols-audios',
+                'w-full gap-10 mt-8 flex flex-col sm:grid sm:grid-cols-audios',
                 res.loading ? 'animate-fade-out-down' : 'animate-fade-in-up',
               )}
             >

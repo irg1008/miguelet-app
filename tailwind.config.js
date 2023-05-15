@@ -78,7 +78,7 @@ module.exports = {
         'in-out-expo': 'var(--ease-in-out-expo)',
       },
       gridTemplateColumns: {
-        audios: 'repeat(auto-fill, minmax(400px, auto))',
+        audios: 'repeat(auto-fit, minmax(400px, auto))',
       },
     },
   },
@@ -92,17 +92,17 @@ module.exports = {
     themes: [
       {
         custom: {
-          primary: 'hsl(212, 100%, 51%)',
-          secondary: 'hsl(247, 47%, 43%)',
+          primary: 'hsl(280, 90%, 65%)',
+          secondary: 'hsl(212, 100%, 51%)',
           accent: 'hsl(310, 49%, 52%)',
           neutral: 'hsl(217, 19%, 27%)',
           'base-100': 'hsl(215, 28%, 17%)',
           'base-200': 'hsl(215, 28%, 27%)',
           'base-300': 'hsl(215, 28%, 37%)',
-          info: 'hsl(199, 95%, 74%)',
-          success: 'hsl(82, 85%, 67%)',
-          warning: 'hsl(50, 98%, 64%)',
-          error: 'hsl(0, 84%, 60%)',
+          info: 'hsl(211, 61%, 63%)',
+          success: 'hsl(151, 61%, 63%)',
+          warning: 'hsl(55, 82%, 72%)',
+          error: 'hsl(1, 61%, 68%)',
           '--btn-focus-scale': '1',
         },
       },

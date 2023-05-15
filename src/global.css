@@ -21,7 +21,7 @@
   }
 
   body {
-    @apply flex min-h-screen flex-col;
+    @apply flex min-h-screen flex-col bg-gradient-to-br from-base-200 to-base-100;
   }
 
   .tooltip {
@@ -29,6 +29,6 @@
   }
 
   mark {
-    @apply bg-transparent bg-gradient-to-r text-accent-content from-accent/20 to-secondary/30 px-0 rounded-md;
+    @apply text-accent-content bg-accent/10 font-bold;
   }
 }

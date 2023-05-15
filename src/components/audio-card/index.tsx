@@ -15,7 +15,7 @@ export const AudioCard = component$<AudioPlayerProps>(({ audio }) => {
   const src = getAudioUrl(audio.item, 'aac');
 
   return (
-    <article class="card bg-gradient-to-br from-primary to-primary-focus drop-shadow-sm h-auto relative shadow-lg shadow-primary/50 ring-2 ring-primary ring-offset-primary-focus ring-offset-2 flex flex-col justify-between">
+    <article class="card h-auto relative bg-opacity-75 backdrop-blur-sm drop-shadow-md shadow-sm shadow-primary/50 border-b-4 bg-base-300 border-primary flex flex-col justify-between">
       <main class="card-body p-3">
         <span dangerouslySetInnerHTML={text} class="line-clamp-2" title={audio.item}></span>
 
