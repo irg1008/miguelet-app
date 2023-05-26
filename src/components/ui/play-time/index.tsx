@@ -22,19 +22,17 @@ export const isValidTime = (time?: number) => {
   return time !== undefined && !isNaN(time) && isFinite(time) && time >= 0;
 };
 
-const CountDown = component$(({ time }: { time: string | number }) => (
-  <span class="countdown">
-    <span style={`--value: ${time};`}></span>
-  </span>
-));
+// const CountDown = component$(({ time }: { time: string | number }) => (
+//   <span class="countdown">
+//     <span style={`--value: ${time};`}></span>
+//   </span>
+// ));
 
 export const PlayTime = component$<PlayTimeProps>(({ seconds, ...props }) => {
   const [min, sec] = formatTime(seconds);
   return (
     <span {...props} class={twMerge(props.class?.toString(), 'flex items-baseline')}>
-      <CountDown time={min} />
-      :
-      <CountDown time={sec} />
+      {min}:{sec}
     </span>
   );
 });

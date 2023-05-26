@@ -51,16 +51,16 @@ export const AudioPlayer = component$<AudioPlayerProps>(({ src, onPause, onPlay 
     });
   });
 
-  const onSliderRelease = $(() => {
-    if (!audio.value) return;
-    audio.value.currentTime = time.value;
-    // TODO: WTF. Maybe changing deep a singla object does not work. Try using store.
-    console.log('time', audio.value.currentTime, time.value);
-  });
+  // const onSliderRelease = $(() => {
+  //   if (!audio.value) return;
+  //   audio.value.currentTime = time.value;
+  //   // TODO: WTF. Maybe changing deep a singla object does not work. Try using store.
+  //   console.log('time', audio.value.currentTime, time.value);
+  // });
 
-  const onSliderChange = $((value: string) => {
-    time.value = Number(value);
-  });
+  // const onSliderChange = $((value: string) => {
+  //   time.value = Number(value);
+  // });
 
   useVisibleTask$(() => {
     setUpAudio();
